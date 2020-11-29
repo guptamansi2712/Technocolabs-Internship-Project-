@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html >
+<!--From https://codepen.io/frytyler/pen/EGdtg-->
+<head>
+  <meta charset="UTF-8">
+  <title>ML API</title>
+  <link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Arimo' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Hind:300' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" href="../static/style.css">
+  
+</head>
+
+<body>
+ <div class="login">
+	<h1>Item Outlet Sales</h1>
+
+     <!-- Main Input For Receiving Query to our ML -->
+    <form action="{{ url_for('predict')}}"method="post">
+    	<input type="text" name="Item Weight" placeholder="Item Weight" required="required" />
+        <input type="text" name="Item MRP" placeholder="Item MRP" required="required" />
+    <!-- <input type="text" name="Item Fat Content" placeholder="Item Fat Content" required="required" > -->
+    <select name="fatContent" class="dropDown">
+      <option value="#">Item Fat Content</option>
+      <option value="0">Low Fat</option>
+      <option value="1">Regular</option>
+    </select>
+    <select name="OutletLocation" class="dropDown">
+      <option value="#">Outlet Location type</option>
+      <option value="0">Tier 1</option>
+      <option value="1">Tier 2</option>
+      <option value="2">Tier 3</option>
+    </select>
+    <select name="OutletSize" class="dropDown">
+      <option value="#">Outlet Size</option>
+      <option value="0">Small</option>
+      <option value="1">Medium</option>
+      <option value="2">High</option>
+    </select>
+        <button type="submit" class="btn btn-primary btn-block btn-large">Predict</button>
+    </form>
+
+   <br>
+   <br>
+   {{ prediction_text }}
+
+ </div>
+
+
+</body>
+</html>
